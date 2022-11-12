@@ -23,7 +23,7 @@ public class GRPCClient {
                 = User.LoginRequest
                 .newBuilder()
                 .setUsername("nick")
-                .setPassword("ndpass")
+                .setPassword("npass")
                 .build();
 
         // sending request using stub
@@ -31,5 +31,8 @@ public class GRPCClient {
         User.APIResponse apiResponse = userBlockingStub.login(loginRequest);
         System.out.println("Response: " + apiResponse.getResponsemessage());
 
+        User.Empty logoutRequest = User.Empty.newBuilder().build();
+        User.LogoutResponse logoutResponse = userBlockingStub.logout(logoutRequest);
+        System.out.println(logoutResponse.getLogoutmessage() + ", code: " + logoutResponse.getResponseCode());
     }
 }
