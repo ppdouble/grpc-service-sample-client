@@ -34,7 +34,9 @@ response. It means that the client cannot do further process.
 
 Using `newFutureStub()`:
 
-It is completable feature concept.
+Creates a new ListenableFuture-style stub that supports unary calls on the service.
+
+It is completable feature concept. 
 
 Using `newStub()`:
 
