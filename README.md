@@ -52,8 +52,29 @@ Once the server sends the response it will capture the response from the server.
 
 `ser.APIResponse apiResponse = userBlockingStub.login(loginRequest);`
 
+## Exception
 
+If the server does not register the service in `addService()`, it will get exception `io.grpc.StatusRuntimeException: UNIMPLEMENTED: Method not found`
 
+```java
+Exception in thread "main" io.grpc.StatusRuntimeException: UNIMPLEMENTED: Method not found: user/login
+	at io.grpc.stub.ClientCalls.toStatusRuntimeException(ClientCalls.java:240)
+	at io.grpc.stub.ClientCalls.getUnchecked(ClientCalls.java:221)
+	at io.grpc.stub.ClientCalls.blockingUnaryCall(ClientCalls.java:140)
+	at nd.pemo.grpcclientsample.userGrpc$userBlockingStub.login(userGrpc.java:211)
+	at nd.pemo.client.GRPCClient.main(GRPCClient.java:31)
+```
+
+or from BloomRPC:
+
+```json
+{
+  "error": "12 UNIMPLEMENTED: Method not found: user/login"
+}
+```
+
+See `Status status = Status.UNIMPLEMENTED.withDescription("Method not found: " + methodName);`
+in `grpc-core-1.27.0.jar!/io/grpc/internal/ServerImpl.class`
 ## Ref
 
 

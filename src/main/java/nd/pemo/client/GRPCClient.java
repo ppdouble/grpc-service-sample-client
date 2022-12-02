@@ -11,7 +11,7 @@ public class GRPCClient {
 
         // create connection
         ManagedChannel managedChannel
-                = ManagedChannelBuilder.forAddress("localhost", 9901)
+                = ManagedChannelBuilder.forAddress("localhost", 9903)
                 .usePlaintext()
                 .build();
 
